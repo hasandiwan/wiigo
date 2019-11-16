@@ -6,7 +6,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :session_token, null: false
       t.string :image_url, null: false
       t.string :location
-      t.timestamps
+      t.datetime :created_at, default: Time.now
+      t.datetime :updated_at, default: Time.now
       t.index :username, unique: true
     end
   end
