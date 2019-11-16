@@ -2,22 +2,22 @@ require 'test_helper'
 
 class Api::GroupsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get api_groups_index_url
+    get '/api/groups/index'
     assert_response :success
   end
 
   test "should get show" do
-    get api_groups_show_url
+    get '/api/groups/show/MyString'
     assert_response :success
   end
 
   test "should get create" do
-    get api_groups_create_url
+    post '/api/groups/create'
     assert_response :success
   end
 
   test "should get update" do
-    get api_groups_update_url
+		put '/api/groups/update'
     assert_response :success
   end
 
