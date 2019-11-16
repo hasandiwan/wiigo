@@ -19,11 +19,9 @@ one:
   password_digest: MyString
   session_token: MyString
   image_url: MyString
-  timestamps: MyString
 
 two:
-  username: MyString
+  username: MyString2
   password_digest: MyString
   session_token: MyString
   image_url: MyString
-  timestamps: MyString

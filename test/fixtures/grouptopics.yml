@@ -16,5 +16,5 @@ one:
   topic_id: 1
 
 two:
-  group_id: 1
-  topic_id: 1
+  group_id: 2
+  topic_id: 2

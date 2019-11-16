@@ -22,7 +22,7 @@ one:
   organizer_id: 1
 
 two:
-  name: MyString
+  name: MyString2
   description: MyText
   hometown: MyString
   image_url: MyString
