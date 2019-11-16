@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20170323135713) do
     t.index ["group_id"], name: "index_events_on_group_id", using: :btree
   end
 
+  create_table "group_topics", force: :cascade do |t|
+    t.integer  "group_id",                            null: false
+    t.integer  "topic_id",                            null: false
+    t.datetime "created_at", default: -> { "now()" }
+    t.datetime "updated_at", default: -> { "now()" }
+    t.index ["group_id"], name: "index_group_topics_on_group_id", using: :btree
+    t.index ["topic_id"], name: "index_group_topics_on_topic_id", using: :btree
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string   "name",         null: false
     t.text     "description",  null: false
@@ -39,11 +48,10 @@ ActiveRecord::Schema.define(version: 20170323135713) do
   end
 
   create_table "grouptopics", force: :cascade do |t|
-    t.integer  "group_id",   null: false
-    t.integer  "topic_id",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["group_id", "topic_id"], name: "index_grouptopics_on_group_id_and_topic_id", unique: true, using: :btree
+    t.integer  "group_id",                            null: false
+    t.integer  "topic_id",                            null: false
+    t.datetime "created_at", default: -> { "now()" }
+    t.datetime "updated_at", default: -> { "now()" }
     t.index ["group_id"], name: "index_grouptopics_on_group_id", using: :btree
     t.index ["topic_id"], name: "index_grouptopics_on_topic_id", using: :btree
   end
@@ -68,25 +76,26 @@ ActiveRecord::Schema.define(version: 20170323135713) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",       null: false
-    t.string   "dash_topic",  null: false
-    t.text     "description", null: false
-    t.string   "image_url",   null: false
-    t.string   "banner_url",  null: false
+    t.string   "title"
+    t.string   "dash_topic"
+    t.text     "description"
+    t.string   "image_url"
+    t.string   "banner_url"
+    t.string   "search_path"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["dash_topic"], name: "index_topics_on_dash_topic", unique: true, using: :btree
-    t.index ["title"], name: "index_topics_on_title", unique: true, using: :btree
+    t.index ["dash_topic"], name: "index_topics_on_dash_topic", using: :btree
+    t.index ["title"], name: "index_topics_on_title", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "image_url",       null: false
+    t.string   "username",                                 null: false
+    t.string   "password_digest",                          null: false
+    t.string   "session_token",                            null: false
+    t.string   "image_url",                                null: false
     t.string   "location"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",      default: -> { "now()" }
+    t.datetime "updated_at",      default: -> { "now()" }
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
   end
 
